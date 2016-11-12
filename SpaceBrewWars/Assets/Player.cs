@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
     public int ID;
-    public int money;
+    public float money;
 
 	// Use this for initialization
 	void Start () {
@@ -15,12 +15,12 @@ public class Player : MonoBehaviour {
 	    
 	}
 
-    void CollectIncome(int income)
+    public void CollectIncome(float income)
     {
         money += income;
     }
 
-    void CollectDebt(int debt)
+    public void CollectDebt(float debt)
     {
         money -= debt;
     }
