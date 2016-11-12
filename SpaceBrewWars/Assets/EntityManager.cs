@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EntityManager : MonoBehaviour {
     public int playerCount = 2;
@@ -148,6 +149,22 @@ public class EntityManager : MonoBehaviour {
         pubs[47] = (GameObject)Instantiate(pubPrefab, new Vector3(1091.0f, lvl4, 578.0f), Quaternion.identity);
         pubs[48] = (GameObject)Instantiate(pubPrefab, new Vector3(777.0f, lvl4, 0.0f), Quaternion.identity);
         pubs[49] = (GameObject)Instantiate(pubPrefab, new Vector3(340.0f, lvl4, 204.0f), Quaternion.identity);
+    }
+
+
+    public List<Vector3> setnearme(Vector3 Pos, float rad)
+    {
+        List<Vector3> nearMe = new List<Vector3>();
+
+        for(int i = 0; i < pubs.Length; i++)
+        {
+            if (Vector3.Distance(pubs[i].transform.position, Pos) < rad && (Pos != pubs[i].transform.position))
+            {
+                nearMe.Add(pubs[i].transform.position);
+            }
+        }
+
+        return nearMe;
     }
 
 }

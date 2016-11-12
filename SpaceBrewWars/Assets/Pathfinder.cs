@@ -22,7 +22,7 @@ public class Pathfinder : MonoBehaviour {
 
     public List<Vector3> returnPath(Vector3 start, Vector3 end)
     {
-       List<Vector3> thePath = new List<Vector3>();
+        List<Vector3> thePath = new List<Vector3>();
         List<GameObject> pathOfNodes = new List<GameObject>();
 
         GameObject startnode = findclosest(start);
@@ -128,8 +128,16 @@ public class Pathfinder : MonoBehaviour {
             }
         }
 
-
+        cleanNodesUp();
         return closestNode;
+    }
+
+    private void cleanNodesUp()
+    {
+        for (int i = 0; i < Nodes.Count; i++)
+        {
+            Nodes[i].GetComponent<nodes>().reset();
+        }
     }
 
 }
