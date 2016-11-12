@@ -67,11 +67,11 @@ public class Builder : MonoBehaviour {
 
 
 
-    void setselected()
+    public void setSelected()
     {
         selected = true;
     }
-    void unselect()
+    public void unselect()
     {
         selected = false;
     }

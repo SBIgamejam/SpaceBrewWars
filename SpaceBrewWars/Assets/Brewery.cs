@@ -7,6 +7,7 @@ public class Brewery : MonoBehaviour {
     public int ecoCost;
     public int owner;
     public GameObject world;
+    private bool selected;
 
     // Use this for initialization
     void Start () {
@@ -16,5 +17,14 @@ public class Brewery : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         world.GetComponent<World>().players[owner].GetComponent<Player>().CollectDebt(ecoCost * Time.deltaTime);
+    }
+
+    public void setSelected()
+    {
+        selected = true;
+    }
+    public void unselect()
+    {
+        selected = false;
     }
 }

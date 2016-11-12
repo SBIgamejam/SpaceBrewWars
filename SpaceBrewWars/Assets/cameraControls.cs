@@ -98,11 +98,6 @@ public class cameraControls : MonoBehaviour {
         transform.position = new Vector3(transform.position.x, (float)((int)transform.position.y), transform.position.z);
     }
 
-    void FixedUpdate()
-    {
-        screenSelection();
-    }
-
     void keyboardControls()
     {
         if (Input.GetKeyDown("up"))
@@ -214,25 +209,17 @@ public class cameraControls : MonoBehaviour {
         return false;
     }
 
-    void screenSelection()
+    public Transform screenSelection()
     {
-        // ray from mouse left click hit object
-        if (Input.GetMouseButtonDown(0))
-        {
-            print("mouse clicked");
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            Debug.Log(mouseRay.origin);
-            Debug.Log(mouseRay.direction);
+       RaycastHit hit;
+       Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(mouseRay, out hit, 2500.0f))
-            {
-                Debug.Log("HIT");
-            }
+       if (Physics.Raycast(mouseRay, out hit, 2500.0f))
+       {
+           return hit.transform;
+       }
 
-
-                // set isSelected in hit object
-            }
+       return hit.transform;
     }
 
 

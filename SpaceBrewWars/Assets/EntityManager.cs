@@ -26,7 +26,57 @@ public class EntityManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // ray from mouse left click hit object
+        if (Input.GetMouseButtonDown(0))
+        {
+            // get the transform
+            Transform selectObjectTransform = Camera.main.GetComponent<cameraControls>().screenSelection();
 
+            // set the selected
+            if (selectObjectTransform.GetComponent<Pub>())
+            {
+                for(int i = 0; i < pubs.Length; ++i)
+                {
+                    if(selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
+                    {
+                        pubs[i].GetComponent<Pub>().setSelected();
+                    }
+                }
+            }
+
+            if (selectObjectTransform.GetComponent<Builder>())
+            {
+                for (int i = 0; i < builders.Length; ++i)
+                {
+                    if (selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
+                    {
+                        pubs[i].GetComponent<Builder>().setSelected();
+                    }
+                }
+            }
+
+            if (selectObjectTransform.GetComponent<Saboteur>())
+            {
+                for (int i = 0; i < saboteurs.Length; ++i)
+                {
+                    if (selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
+                    {
+                        pubs[i].GetComponent<Saboteur>().setSelected();
+                    }
+                }
+            }
+
+            if (selectObjectTransform.GetComponent<Brewery>())
+            {
+                for (int i = 0; i < brews.Length; ++i)
+                {
+                    if (selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
+                    {
+                        pubs[i].GetComponent<Brewery>().setSelected();
+                    }
+                }
+            }
+        }
     }
 
     void Create()

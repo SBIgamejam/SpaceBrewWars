@@ -9,6 +9,7 @@ public class Pub : MonoBehaviour {
     public GameObject world;
     public GameObject tower;
     public GameObject towerPrefab;
+    private bool selected;
 
     // Use this for initialization
     void Start() {
@@ -38,5 +39,14 @@ public class Pub : MonoBehaviour {
         {
             tower.GetComponent<Tower>().Upgrade();
         }
+    }
+
+    public void setSelected()
+    {
+        selected = true;
+    }
+    public void unselect()
+    {
+        selected = false;
     }
 }
