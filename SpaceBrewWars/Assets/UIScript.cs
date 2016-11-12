@@ -10,13 +10,12 @@ public class UIScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         world = GameObject.FindGameObjectWithTag("World");
-        Currency = GetComponent<Text>();
         Currency.text = world.GetComponent<World>().players[0].GetComponent<Player>().money.ToString();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        Currency.text = "hi";
+        Currency.text = world.GetComponent<World>().players[0].GetComponent<Player>().money.ToString();
 
 
     }
