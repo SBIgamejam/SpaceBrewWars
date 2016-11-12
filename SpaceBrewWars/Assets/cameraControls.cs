@@ -17,8 +17,11 @@ public class cameraControls : MonoBehaviour {
     private bool mouseRight;
     private bool mouseLeft;
 
+    public Vector3 worldCenter;
+    public float worldRad;
+
     private int indexY = 0;
-    private List<float> yLevel = new List<float>();
+    public List<float> yLevel = new List<float>();
     bool yTransition = false;
 
     void Start () {
@@ -33,9 +36,6 @@ public class cameraControls : MonoBehaviour {
         yLevel.Add(5.0f);
         yLevel.Add(4.0f);
 
-        Debug.Log(yLevel.Count);
-
-        Debug.Log(Screen.width);
     }
 	
 	// Update is called once per frame
@@ -48,18 +48,38 @@ public class cameraControls : MonoBehaviour {
         if (keyUp == true || mouseUp == true)
         {
             transform.position += (new Vector3(0, 0, 1) * speed) * Time.deltaTime;
+
+            if(Vector3.Distance(worldCenter,transform.position) > worldRad)
+            {
+                transform.position -= (new Vector3(0, 0, 1) * speed) * Time.deltaTime;
+            }
         }
         if (keyDown == true || mouseDown == true)
         {
             transform.position += (new Vector3(0, 0, -1) * speed) * Time.deltaTime;
+
+            if (Vector3.Distance(worldCenter, transform.position) > worldRad)
+            {
+                transform.position += (new Vector3(0, 0, 1) * speed) * Time.deltaTime;
+            }
         }
         if (keyRight == true || mouseRight == true)
         {
             transform.position += (new Vector3(1, 0, 0) * speed) * Time.deltaTime;
+
+            if (Vector3.Distance(worldCenter, transform.position) > worldRad)
+            {
+                transform.position += (new Vector3(0, 0, 1) * speed) * Time.deltaTime;
+            }
         }
         if (keyLeft == true || mouseLeft == true)
         {
             transform.position += (new Vector3(-1, 0, 0) * speed) * Time.deltaTime;
+
+            if (Vector3.Distance(worldCenter, transform.position) > worldRad)
+            {
+                transform.position += (new Vector3(0, 0, 1) * speed) * Time.deltaTime;
+            }
         }
 
         if(yTransition == true)
@@ -188,5 +208,15 @@ public class cameraControls : MonoBehaviour {
 
         return false;
     }
+
+    public void worlddata(Vector3 wCenter, float rad, List<float> levels)
+    {
+        worldCenter = wCenter;
+        worldRad = rad;
+        yLevel = levels;
+    }
+
+
+
 
 }
