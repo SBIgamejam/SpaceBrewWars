@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.2, y: -53.5, z: 48.3}
+  m_LocalPosition: {x: -41.6, y: -53.5, z: 48.3}
   m_LocalScale: {x: 4.1857452, y: 4.1857433, z: 4.1857433}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -42,12 +42,13 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6ea3ce3c70cce3245a567204b7159b23, type: 2}
-  - {fileID: 2100000, guid: f57c82006d9ee3141a71143fbc7b6315, type: 2}
-  - {fileID: 2100000, guid: 2a01c7acf7276e641bfd1938039cf01a, type: 2}
-  - {fileID: 2100000, guid: 29973270ed4fa6643ad61776f879f67e, type: 2}
-  - {fileID: 2100000, guid: 74db0c4b9c58d344eb5a3e8ad17db271, type: 2}
-  - {fileID: 2100000, guid: a56b5f172c435744cb5b342925e699b0, type: 2}
+  - {fileID: 2100000, guid: f26a283ba1d58e74c91658f892b25c6d, type: 2}
+  - {fileID: 2100000, guid: 3ca333c4d83a27943b7f8fc3b919bf0a, type: 2}
+  - {fileID: 2100000, guid: aa23f4546678bb44797b432da5370c4e, type: 2}
+  - {fileID: 2100000, guid: ca7064be5342c504fbe90ebe5ae8b48a, type: 2}
+  - {fileID: 2100000, guid: 921e17f0b5ff3334fb15a919ebdeafbd, type: 2}
+  - {fileID: 2100000, guid: 10faed61b91805d4382fbea63810ccdf, type: 2}
+  - {fileID: 2100000, guid: ca7b30010c1da224a911644782666569, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -97,7 +98,8 @@ MonoBehaviour:
   owner: 0
   world: {fileID: 0}
   tower: {fileID: 0}
-  towerPrefab: {fileID: 0}
+  towerPrefab: {fileID: 184368, guid: 3a554d989db96524e9a22bb149203bf8, type: 2}
+  PlayerID: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

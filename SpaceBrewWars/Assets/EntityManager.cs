@@ -9,11 +9,13 @@ public class EntityManager : MonoBehaviour {
     public GameObject builderPrefab;
     public GameObject saboteurPrefab;
     public GameObject masterBrewPrefab;
+    public GameObject nodesObject;
 
     GameObject[] pubs;
     GameObject[] brews;
     GameObject[] builders;
     GameObject[] saboteurs;
+    GameObject[] nodes;
 
 	// Use this for initialization
 	void Start () {
@@ -33,47 +35,50 @@ public class EntityManager : MonoBehaviour {
             // get the transform
             Transform selectObjectTransform = Camera.main.GetComponent<cameraControls>().screenSelection();
 
-            // set the selected
-            if (selectObjectTransform.GetComponent<Pub>())
+            if (selectObjectTransform != null)
             {
-                for (int i = 0; i < pubs.Length; ++i)
+                // set the selected
+                if (selectObjectTransform.GetComponent<Pub>())
                 {
-                    if (selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
+                    for (int i = 0; i < pubs.Length; ++i)
                     {
-                        pubs[i].GetComponent<Pub>().setSelected();
+                        if (selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
+                        {
+                            pubs[i].GetComponent<Pub>().setSelected();
+                        }
                     }
                 }
-            }
 
-            if (selectObjectTransform.GetComponent<Builder>())
-            {
-                for (int i = 0; i < builders.Length; ++i)
+                if (selectObjectTransform.GetComponent<Builder>())
                 {
-                    if (selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
+                    for (int i = 0; i < builders.Length; ++i)
                     {
-                        pubs[i].GetComponent<Builder>().setSelected();
+                        if (selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
+                        {
+                            pubs[i].GetComponent<Builder>().setSelected();
+                        }
                     }
                 }
-            }
 
-            if (selectObjectTransform.GetComponent<Saboteur>())
-            {
-                for (int i = 0; i < saboteurs.Length; ++i)
+                if (selectObjectTransform.GetComponent<Saboteur>())
                 {
-                    if (selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
+                    for (int i = 0; i < saboteurs.Length; ++i)
                     {
-                        pubs[i].GetComponent<Saboteur>().setSelected();
+                        if (selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
+                        {
+                            pubs[i].GetComponent<Saboteur>().setSelected();
+                        }
                     }
                 }
-            }
 
-            if (selectObjectTransform.GetComponent<Brewery>())
-            {
-                for (int i = 0; i < brews.Length; ++i)
+                if (selectObjectTransform.GetComponent<Brewery>())
                 {
-                    if (selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
+                    for (int i = 0; i < brews.Length; ++i)
                     {
-                        pubs[i].GetComponent<Brewery>().setSelected();
+                        if (selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
+                        {
+                            pubs[i].GetComponent<Brewery>().setSelected();
+                        }
                     }
                 }
             }
@@ -83,22 +88,25 @@ public class EntityManager : MonoBehaviour {
         if (Input.GetMouseButtonDown(1))
         {
             Transform selectObjectTransform = Camera.main.GetComponent<cameraControls>().screenSelection();
-            Debug.Log(selectObjectTransform.transform.name);
-            Debug.Log("right click");
-
-            if (selectObjectTransform.GetComponent<Builder>())
+            
+            if (selectObjectTransform != null)
             {
-                for (int i = 0; i < builders.Length; ++i)
+                Debug.Log(selectObjectTransform.transform.name);
+
+                if (selectObjectTransform.GetComponent<Builder>())
                 {
-                   pubs[i].GetComponent<Builder>().build(selectObjectTransform);
+                    for (int i = 0; i < builders.Length; ++i)
+                    {
+                        pubs[i].GetComponent<Builder>().build(selectObjectTransform);
+                    }
                 }
-            }
 
-            if (selectObjectTransform.GetComponent<Saboteur>())
-            {
-                for (int i = 0; i < saboteurs.Length; ++i)
+                if (selectObjectTransform.GetComponent<Saboteur>())
                 {
-                    pubs[i].GetComponent<Saboteur>().destroy(selectObjectTransform);
+                    for (int i = 0; i < saboteurs.Length; ++i)
+                    {
+                        pubs[i].GetComponent<Saboteur>().destroy(selectObjectTransform);
+                    }
                 }
             }
         }
@@ -114,13 +122,23 @@ public class EntityManager : MonoBehaviour {
 
         brews = new GameObject[playerCount];
         pubs = new GameObject[50];
+        nodes = new GameObject[50 + playerCount];
 
         brews[0] = (GameObject)Instantiate(brewPrefab, new Vector3(0.0f, lvl0, 0.0f), Quaternion.identity);
         brews[1] = (GameObject)Instantiate(brewPrefab, new Vector3(0.0f, lvl0, 1350.0f), Quaternion.identity);
 
+        nodes[0] = (GameObject)Instantiate(nodesObject, new Vector3(brews[0].transform.position.x,
+                                                                    brews[0].transform.position.y,
+                                                                    brews[0].transform.position.z),
+                                                                    Quaternion.identity);
+        nodes[1] = (GameObject)Instantiate(nodesObject, new Vector3(brews[1].transform.position.x,
+                                                                    brews[1].transform.position.y,
+                                                                    brews[1].transform.position.z),
+                                                                    Quaternion.identity);
+
         // level 0
-        pubs[0] = (GameObject)Instantiate(pubPrefab, new Vector3(684.0f, lvl0, 0.0f), Quaternion.identity);
-        pubs[1] = (GameObject)Instantiate(pubPrefab, new Vector3(210.0f, lvl0, 250.0f), Quaternion.identity);
+        pubs[0] = (GameObject)Instantiate(pubPrefab, new Vector3(210.0f, lvl0, 250.0f), Quaternion.identity);
+        pubs[1] = (GameObject)Instantiate(pubPrefab, new Vector3(684.0f, lvl0, 0.0f), Quaternion.identity);
         pubs[2] = (GameObject)Instantiate(pubPrefab, new Vector3(850.0f, lvl0, 891.0f), Quaternion.identity);
         pubs[3] = (GameObject)Instantiate(pubPrefab, new Vector3(1458.0f, lvl0, 512.0f), Quaternion.identity);
         pubs[4] = (GameObject)Instantiate(pubPrefab, new Vector3(1026.0f, lvl0, 1274.0f), Quaternion.identity);
@@ -129,50 +147,115 @@ public class EntityManager : MonoBehaviour {
         pubs[7] = (GameObject)Instantiate(pubPrefab, new Vector3(-942.0f, lvl0, 789.0f), Quaternion.identity);
         pubs[8] = (GameObject)Instantiate(pubPrefab, new Vector3(-1420.0f, lvl0, 1053.0f), Quaternion.identity);
         pubs[9] = (GameObject)Instantiate(pubPrefab, new Vector3(314.0f, lvl0, 784.0f), Quaternion.identity);
+        nodes[2] = (GameObject)Instantiate(nodesObject, new Vector3(pubs[0].transform.position.x,
+                                                                    pubs[0].transform.position.y,
+                                                                    pubs[0].transform.position.z),
+                                                                    Quaternion.identity);
+        nodes[3] = (GameObject)Instantiate(nodesObject, new Vector3(pubs[1].transform.position.x,
+                                                                    pubs[1].transform.position.y,
+                                                                    pubs[1].transform.position.z),
+                                                                    Quaternion.identity);
+        nodes[4] = (GameObject)Instantiate(nodesObject, new Vector3(pubs[2].transform.position.x,
+                                                                    pubs[2].transform.position.y,
+                                                                    pubs[2].transform.position.z),
+                                                                    Quaternion.identity);
+        nodes[5] = (GameObject)Instantiate(nodesObject, new Vector3(pubs[3].transform.position.x,
+                                                                    pubs[3].transform.position.y,
+                                                                    pubs[3].transform.position.z),
+                                                                    Quaternion.identity);
+        nodes[6] = (GameObject)Instantiate(nodesObject, new Vector3(pubs[4].transform.position.x,
+                                                                    pubs[4].transform.position.y,
+                                                                    pubs[4].transform.position.z),
+                                                                    Quaternion.identity);
+        nodes[7] = (GameObject)Instantiate(nodesObject, new Vector3(pubs[5].transform.position.x,
+                                                                    pubs[5].transform.position.y,
+                                                                    pubs[5].transform.position.z),
+                                                                    Quaternion.identity);
+        nodes[8] = (GameObject)Instantiate(nodesObject, new Vector3(pubs[6].transform.position.x,
+                                                                    pubs[6].transform.position.y,
+                                                                    pubs[6].transform.position.z),
+                                                                    Quaternion.identity);
+        nodes[9] = (GameObject)Instantiate(nodesObject, new Vector3(pubs[7].transform.position.x,
+                                                                    pubs[7].transform.position.y,
+                                                                    pubs[7].transform.position.z),
+                                                                    Quaternion.identity);
+        nodes[10] = (GameObject)Instantiate(nodesObject, new Vector3(pubs[8].transform.position.x,
+                                                                    pubs[8].transform.position.y,
+                                                                    pubs[8].transform.position.z),
+                                                                    Quaternion.identity);
+        nodes[11] = (GameObject)Instantiate(nodesObject, new Vector3(pubs[9].transform.position.x,
+                                                                    pubs[9].transform.position.y,
+                                                                    pubs[9].transform.position.z),
+                                                                    Quaternion.identity);
         // level 1
-        pubs[10] = (GameObject)Instantiate(pubPrefab, new Vector3(0.0f, lvl1, 0.0f), Quaternion.identity);
-        pubs[11] = (GameObject)Instantiate(pubPrefab, new Vector3(-392.0f, lvl1, 125.0f), Quaternion.identity);
-        pubs[12] = (GameObject)Instantiate(pubPrefab, new Vector3(-778.0f, lvl1, 585.0f), Quaternion.identity);
-        pubs[13] = (GameObject)Instantiate(pubPrefab, new Vector3(-1125.0f, lvl1, 240.0f), Quaternion.identity);
-        pubs[14] = (GameObject)Instantiate(pubPrefab, new Vector3(-168.0f, lvl1, 850.0f), Quaternion.identity);
-        pubs[15] = (GameObject)Instantiate(pubPrefab, new Vector3(200.0f, lvl1, 294.0f), Quaternion.identity);
-        pubs[16] = (GameObject)Instantiate(pubPrefab, new Vector3(548.0f, lvl1, 598.0f), Quaternion.identity);
-        pubs[17] = (GameObject)Instantiate(pubPrefab, new Vector3(997.0f, lvl1, 389.0f), Quaternion.identity);
-        pubs[18] = (GameObject)Instantiate(pubPrefab, new Vector3(1024.0f, lvl1, 1242.0f), Quaternion.identity);
-        pubs[19] = (GameObject)Instantiate(pubPrefab, new Vector3(210.0f, lvl1, 921.0f), Quaternion.identity);
-        // level 2
-        pubs[20] = (GameObject)Instantiate(pubPrefab, new Vector3(100.0f, lvl2, 0.0f), Quaternion.identity);
-        pubs[21] = (GameObject)Instantiate(pubPrefab, new Vector3(750.0f, lvl2, 148.0f), Quaternion.identity);
-        pubs[22] = (GameObject)Instantiate(pubPrefab, new Vector3(1000.0f, lvl2, 650.0f), Quaternion.identity);
-        pubs[23] = (GameObject)Instantiate(pubPrefab, new Vector3(648.0f, lvl2, 1230.0f), Quaternion.identity);
-        pubs[24] = (GameObject)Instantiate(masterBrewPrefab, new Vector3(300.0f, lvl2, 600.0f), Quaternion.identity); ///< middle
-        pubs[25] = (GameObject)Instantiate(pubPrefab, new Vector3(-245.0f, lvl2, 112.0f), Quaternion.identity);
-        pubs[26] = (GameObject)Instantiate(pubPrefab, new Vector3(-598.0f, lvl2, 479.0f), Quaternion.identity);
-        pubs[27] = (GameObject)Instantiate(pubPrefab, new Vector3(-865.0f, lvl2, 912.0f), Quaternion.identity);
-        pubs[28] = (GameObject)Instantiate(pubPrefab, new Vector3(-470.0f, lvl2, 1352.0f), Quaternion.identity);
-        pubs[29] = (GameObject)Instantiate(pubPrefab, new Vector3(71.0f, lvl2, 1197.0f), Quaternion.identity);
-        // level 3
-        pubs[30] = (GameObject)Instantiate(pubPrefab, new Vector3(-740.0f, lvl3, 872.0f), Quaternion.identity);
-        pubs[31] = (GameObject)Instantiate(pubPrefab, new Vector3(-98.0f, lvl3, 753.0f), Quaternion.identity);
-        pubs[32] = (GameObject)Instantiate(pubPrefab, new Vector3(245.0f, lvl3, 1200.0f), Quaternion.identity);
-        pubs[33] = (GameObject)Instantiate(pubPrefab, new Vector3(908.0f, lvl3, 1350.0f), Quaternion.identity);
-        pubs[34] = (GameObject)Instantiate(pubPrefab, new Vector3(1080.0f, lvl3, 752.0f), Quaternion.identity);
-        pubs[35] = (GameObject)Instantiate(pubPrefab, new Vector3(930.0f, lvl3, 192.0f), Quaternion.identity);
-        pubs[36] = (GameObject)Instantiate(pubPrefab, new Vector3(478.0f, lvl3, 353.0f), Quaternion.identity);
-        pubs[37] = (GameObject)Instantiate(pubPrefab, new Vector3(245.0f, lvl3, 1200.0f), Quaternion.identity);
-        pubs[38] = (GameObject)Instantiate(pubPrefab, new Vector3(690.0f, lvl3, 752.0f), Quaternion.identity);
-        pubs[39] = (GameObject)Instantiate(pubPrefab, new Vector3(-740.0f, lvl3, 872.0f), Quaternion.identity);
-        // level 4
-        pubs[40] = (GameObject)Instantiate(pubPrefab, new Vector3(0.0f, lvl4, 0.0f), Quaternion.identity);
-        pubs[41] = (GameObject)Instantiate(pubPrefab, new Vector3(-449.8f, lvl4, 135.0f), Quaternion.identity);
-        pubs[42] = (GameObject)Instantiate(pubPrefab, new Vector3(-290.0f, lvl4, 478.0f), Quaternion.identity);
-        pubs[43] = (GameObject)Instantiate(pubPrefab, new Vector3(-492.0f, lvl4, 845.0f), Quaternion.identity);
-        pubs[44] = (GameObject)Instantiate(pubPrefab, new Vector3(89.0f, lvl4, 1200.0f), Quaternion.identity);
-        pubs[45] = (GameObject)Instantiate(pubPrefab, new Vector3(336.0f, lvl4, 752.0f), Quaternion.identity);
-        pubs[46] = (GameObject)Instantiate(pubPrefab, new Vector3(688.0f, lvl4, 1001.0f), Quaternion.identity);
-        pubs[47] = (GameObject)Instantiate(pubPrefab, new Vector3(1091.0f, lvl4, 578.0f), Quaternion.identity);
-        pubs[48] = (GameObject)Instantiate(pubPrefab, new Vector3(777.0f, lvl4, 0.0f), Quaternion.identity);
-        pubs[49] = (GameObject)Instantiate(pubPrefab, new Vector3(340.0f, lvl4, 204.0f), Quaternion.identity);
+        //pubs[10] = (GameObject)Instantiate(pubPrefab, new Vector3(0.0f, lvl1, 0.0f), Quaternion.identity);
+        //pubs[11] = (GameObject)Instantiate(pubPrefab, new Vector3(-392.0f, lvl1, 125.0f), Quaternion.identity);
+        //pubs[12] = (GameObject)Instantiate(pubPrefab, new Vector3(-778.0f, lvl1, 585.0f), Quaternion.identity);
+        //pubs[13] = (GameObject)Instantiate(pubPrefab, new Vector3(-1125.0f, lvl1, 240.0f), Quaternion.identity);
+        //pubs[14] = (GameObject)Instantiate(pubPrefab, new Vector3(-168.0f, lvl1, 850.0f), Quaternion.identity);
+        //pubs[15] = (GameObject)Instantiate(pubPrefab, new Vector3(200.0f, lvl1, 294.0f), Quaternion.identity);
+        //pubs[16] = (GameObject)Instantiate(pubPrefab, new Vector3(548.0f, lvl1, 598.0f), Quaternion.identity);
+        //pubs[17] = (GameObject)Instantiate(pubPrefab, new Vector3(997.0f, lvl1, 389.0f), Quaternion.identity);
+        //pubs[18] = (GameObject)Instantiate(pubPrefab, new Vector3(1024.0f, lvl1, 1242.0f), Quaternion.identity);
+        //pubs[19] = (GameObject)Instantiate(pubPrefab, new Vector3(210.0f, lvl1, 921.0f), Quaternion.identity);
+        //// level 2
+        //pubs[20] = (GameObject)Instantiate(pubPrefab, new Vector3(100.0f, lvl2, 0.0f), Quaternion.identity);
+        //pubs[21] = (GameObject)Instantiate(pubPrefab, new Vector3(750.0f, lvl2, 148.0f), Quaternion.identity);
+        //pubs[22] = (GameObject)Instantiate(pubPrefab, new Vector3(1000.0f, lvl2, 650.0f), Quaternion.identity);
+        //pubs[23] = (GameObject)Instantiate(pubPrefab, new Vector3(648.0f, lvl2, 1230.0f), Quaternion.identity);
+        //pubs[24] = (GameObject)Instantiate(masterBrewPrefab, new Vector3(300.0f, lvl2, 600.0f), Quaternion.identity); ///< middle
+        //pubs[25] = (GameObject)Instantiate(pubPrefab, new Vector3(-245.0f, lvl2, 112.0f), Quaternion.identity);
+        //pubs[26] = (GameObject)Instantiate(pubPrefab, new Vector3(-598.0f, lvl2, 479.0f), Quaternion.identity);
+        //pubs[27] = (GameObject)Instantiate(pubPrefab, new Vector3(-865.0f, lvl2, 912.0f), Quaternion.identity);
+        //pubs[28] = (GameObject)Instantiate(pubPrefab, new Vector3(-470.0f, lvl2, 1352.0f), Quaternion.identity);
+        //pubs[29] = (GameObject)Instantiate(pubPrefab, new Vector3(71.0f, lvl2, 1197.0f), Quaternion.identity);
+        //// level 3
+        //pubs[30] = (GameObject)Instantiate(pubPrefab, new Vector3(-740.0f, lvl3, 872.0f), Quaternion.identity);
+        //pubs[31] = (GameObject)Instantiate(pubPrefab, new Vector3(-98.0f, lvl3, 753.0f), Quaternion.identity);
+        //pubs[32] = (GameObject)Instantiate(pubPrefab, new Vector3(245.0f, lvl3, 1200.0f), Quaternion.identity);
+        //pubs[33] = (GameObject)Instantiate(pubPrefab, new Vector3(908.0f, lvl3, 1350.0f), Quaternion.identity);
+        //pubs[34] = (GameObject)Instantiate(pubPrefab, new Vector3(1080.0f, lvl3, 752.0f), Quaternion.identity);
+        //pubs[35] = (GameObject)Instantiate(pubPrefab, new Vector3(930.0f, lvl3, 192.0f), Quaternion.identity);
+        //pubs[36] = (GameObject)Instantiate(pubPrefab, new Vector3(478.0f, lvl3, 353.0f), Quaternion.identity);
+        //pubs[37] = (GameObject)Instantiate(pubPrefab, new Vector3(245.0f, lvl3, 1200.0f), Quaternion.identity);
+        //pubs[38] = (GameObject)Instantiate(pubPrefab, new Vector3(690.0f, lvl3, 752.0f), Quaternion.identity);
+        //pubs[39] = (GameObject)Instantiate(pubPrefab, new Vector3(-740.0f, lvl3, 872.0f), Quaternion.identity);
+        //// level 4
+        //pubs[40] = (GameObject)Instantiate(pubPrefab, new Vector3(0.0f, lvl4, 0.0f), Quaternion.identity);
+        //pubs[41] = (GameObject)Instantiate(pubPrefab, new Vector3(-449.8f, lvl4, 135.0f), Quaternion.identity);
+        //pubs[42] = (GameObject)Instantiate(pubPrefab, new Vector3(-290.0f, lvl4, 478.0f), Quaternion.identity);
+        //pubs[43] = (GameObject)Instantiate(pubPrefab, new Vector3(-492.0f, lvl4, 845.0f), Quaternion.identity);
+        //pubs[44] = (GameObject)Instantiate(pubPrefab, new Vector3(89.0f, lvl4, 1200.0f), Quaternion.identity);
+        //pubs[45] = (GameObject)Instantiate(pubPrefab, new Vector3(336.0f, lvl4, 752.0f), Quaternion.identity);
+        //pubs[46] = (GameObject)Instantiate(pubPrefab, new Vector3(688.0f, lvl4, 1001.0f), Quaternion.identity);
+        //pubs[47] = (GameObject)Instantiate(pubPrefab, new Vector3(1091.0f, lvl4, 578.0f), Quaternion.identity);
+        //pubs[48] = (GameObject)Instantiate(pubPrefab, new Vector3(777.0f, lvl4, 0.0f), Quaternion.identity);
+        //pubs[49] = (GameObject)Instantiate(pubPrefab, new Vector3(340.0f, lvl4, 204.0f), Quaternion.identity);
+
+        // create node links
+        nodes[0].GetComponent<nodes>().addConnection(pubs[0]);
+        nodes[2].GetComponent<nodes>().addConnection(pubs[1]);
+        nodes[2].GetComponent<nodes>().addConnection(pubs[5]);
+        nodes[2].GetComponent<nodes>().addConnection(pubs[9]);
+        nodes[3].GetComponent<nodes>().addConnection(null);
+        nodes[4].GetComponent<nodes>().addConnection(pubs[5]);
+        nodes[4].GetComponent<nodes>().addConnection(pubs[6]);
+        nodes[5].GetComponent<nodes>().addConnection(null);
+        nodes[6].GetComponent<nodes>().addConnection(null);
+        nodes[7].GetComponent<nodes>().addConnection(null);
+        nodes[8].GetComponent<nodes>().addConnection(pubs[9]);
+        nodes[9].GetComponent<nodes>().addConnection(pubs[10]);
+        nodes[10].GetComponent<nodes>().addConnection(null);
+        nodes[11].GetComponent<nodes>().addConnection(pubs[3]);
+
+        // for debugging
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            for(int ii = 0; ii < nodes[i].GetComponent<nodes>().getnodes().Count; ++ii)
+            {
+                Debug.Log(i + " " + nodes[i].GetComponent<nodes>().getnodes()[ii].transform.position);
+            }
+        }
     }
 
 

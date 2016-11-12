@@ -10,8 +10,6 @@ GameObject:
   - 4: {fileID: 492160}
   - 33: {fileID: 3395072}
   - 23: {fileID: 2370212}
-  - 65: {fileID: 6552556}
-  - 114: {fileID: 11499074}
   m_Layer: 0
   m_Name: Saboteur
   m_TagString: Untagged
@@ -26,8 +24,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.9, y: 0, z: 61.1}
-  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
+  m_LocalPosition: {x: 18.9, y: -0.37909, z: 61.1}
+  m_LocalScale: {x: 1.6005082, y: 1.6005086, z: 1.6005086}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,14 +40,19 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ca7b30010c1da224a911644782666569, type: 2}
+  - {fileID: 2100000, guid: e3fc5a570a3010746b4273b8ec07cd11, type: 2}
+  - {fileID: 2100000, guid: 9540c01c3c5492b4288393aebca4134e, type: 2}
+  - {fileID: 2100000, guid: 071cb49652c833042ab6393b2698e2c4, type: 2}
+  - {fileID: 2100000, guid: 61d4438260636824396edacfde8c5571, type: 2}
+  - {fileID: 2100000, guid: 7d37d69ae3d627b4fb104296fa2d450a, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
   m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
+  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
@@ -64,34 +67,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181406}
-  m_Mesh: {fileID: 4300000, guid: d1b3cced9f8acde479a8da07d7f21483, type: 3}
---- !u!65 &6552556
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181406}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1051.6924, y: 330.93762, z: 1301.8206}
-  m_Center: {x: 0, y: 63.12874, z: 0}
---- !u!114 &11499074
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feb6ba25d66318544b31322075bce3ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owner: 0
-  alive: 0
-  pathfinder: {fileID: 0}
-  world: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 78d922d6c56c134418bf8054bbef459d, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
