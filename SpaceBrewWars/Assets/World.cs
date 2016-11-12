@@ -12,7 +12,7 @@ public class World : MonoBehaviour {
     //public AIManager aiManager;
     //public UIManager uiManagerl
     public int numberOfPlayers;
-    int[] players;
+    public Player[] players;
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +26,12 @@ public class World : MonoBehaviour {
         if (numberOfLevels == 0)
             numberOfLevels = 1;
 
-        players = new int[numberOfPlayers];
+        players = new Player[numberOfPlayers];
+
+        for(int i = 0; i < numberOfPlayers; i++)
+        {
+            players[i].ID = i;
+        }
 
         WorldGeneration();
 	}
