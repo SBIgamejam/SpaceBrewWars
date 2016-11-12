@@ -16,6 +16,6 @@ public class Pub : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        world.GetComponent<World>().players[owner].CollectIncome(ecoValue * Time.deltaTime);
+        world.GetComponent<World>().players[owner].GetComponent<Player>().CollectIncome(ecoValue * Time.deltaTime);
 	}
 }
