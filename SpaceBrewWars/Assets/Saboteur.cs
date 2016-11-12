@@ -16,6 +16,7 @@ public class Saboteur : MonoBehaviour {
     public GameObject world;
     private float health;
     private float sepRad;
+    public int PlayerID;
 
     // Use this for initialization
     void Start () {
@@ -126,5 +127,9 @@ public class Saboteur : MonoBehaviour {
     {
         velocity += Vector3.Normalize(seekPos - transform.position);
 
+    }
+    public void setteam(int PId)
+    {
+        PlayerID = PId;
     }
 }

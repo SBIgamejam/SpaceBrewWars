@@ -15,6 +15,7 @@ public class Builder : MonoBehaviour {
     public GameObject world;
     private float health;
     float sepRad;
+    int playerID;
 
 
     // Use this for initialization
@@ -127,6 +128,11 @@ public class Builder : MonoBehaviour {
     {
         velocity += Vector3.Normalize(seekPos - transform.position);
         
+    }
+
+    public void setteam(int PId)
+    {
+        playerID = PId;
     }
 
 }

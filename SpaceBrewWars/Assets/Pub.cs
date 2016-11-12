@@ -10,6 +10,7 @@ public class Pub : MonoBehaviour {
     public GameObject tower;
     public GameObject towerPrefab;
     private bool selected;
+    public int PlayerID;
 
     // Use this for initialization
     void Start() {
@@ -21,12 +22,12 @@ public class Pub : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        world.GetComponent<World>().players[owner].GetComponent<Player>().CollectIncome(ecoValue * Time.deltaTime);
+        //world.GetComponent<World>().players[owner].GetComponent<Player>().CollectIncome(ecoValue * Time.deltaTime);
     }
 
     public void BuildTower()
     {
-        tower = (GameObject)Instantiate(towerPrefab, this.transform.position + new Vector3(0,0.7f,0), Quaternion.identity);
+        //tower = (GameObject)Instantiate(towerPrefab, this.transform.position + new Vector3(0,0.7f,0), Quaternion.identity);
     }
 
     public void UpgradeTower()
@@ -48,5 +49,10 @@ public class Pub : MonoBehaviour {
     public void unselect()
     {
         selected = false;
+    }
+
+    public void setteam(int PId)
+    {
+        PlayerID = PId;
     }
 }
