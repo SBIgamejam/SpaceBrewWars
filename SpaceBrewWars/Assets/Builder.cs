@@ -9,18 +9,19 @@ public class Builder : MonoBehaviour {
     private bool selected;
     public GameObject pathfinder;
     private List<Vector3> seekPosition = new List<Vector3>();
-    int state = 0;
+    int state;
     private Vector3 velocity;
     private float speed;
     public GameObject world;
     private float health;
-
+    float sepRad;
 
 
     // Use this for initialization
     void Start () {
 
         health = 200;
+        state = 0;
 
     }
 	
@@ -29,29 +30,54 @@ public class Builder : MonoBehaviour {
 	
         if(state == 0) //idel;
         {
-           
+            velocity = new Vector3(0, 0, 0);
         }
         else if(state == 1) //seek
         {
+            seek(seekPosition[0]);
 
+            velocity = Vector3.Normalize(velocity) * speed;
 
-            if(seekPosition.Count == 0)
+            if(Vector3.Distance(transform.position,seekPosition[0]) < 3)
+            {
+                seekPosition.Remove(seekPosition[0]);
+            }
+
+            if (seekPosition.Count == 0)
             {
                 state = 0;
             }
         }
         else if (state == 2) // build
         {
-            
+            seek(seekPosition[0]);
+
+            velocity = Vector3.Normalize(velocity) * speed;
+
+            if (Vector3.Distance(transform.position, seekPosition[0]) < 3)
+            {
+                seekPosition.Remove(seekPosition[0]);
+            }
+
+            if (Vector3.Distance(transform.position, seekPosition[0]) < 3)
+            {
+                seekPosition.Remove(seekPosition[0]);
+            }
+
+            if (seekPosition.Count == 0)
+            {
+                
+            }
         }
 
-	}
+        transform.position += velocity * Time.deltaTime;
+
+    }
 
 
     void actions(Vector3 targetlocation, bool action)
     {
-        //pathfind the target location
-        //set the correct state 
+        pathfinder.GetComponent<Pathfinder>().returnPath(transform.position, targetlocation);
 
         if (action == false)
         {
@@ -81,7 +107,12 @@ public class Builder : MonoBehaviour {
     {
 
 
+    }
 
+    void seek(Vector3 seekPos)
+    {
+        velocity += Vector3.Normalize(seekPos - transform.position);
+        
     }
 
 }
