@@ -12,7 +12,7 @@ public class World : MonoBehaviour {
     //public AIManager aiManager;
     //public UIManager uiManagerl
     public int numberOfPlayers;
-    Player[] players;
+    public Player[] players;
 
 	// Use this for initialization
 	void Start () {
