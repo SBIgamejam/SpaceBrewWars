@@ -7,7 +7,7 @@ public class Builder : MonoBehaviour {
     public int owner; // playerID, which player owns it
     public bool alive; // is this ship alive? if not it need to be cleaned up and removed from the world.
     private bool selected;
-    private GameObject pathfinder;
+    public GameObject pathfinder;
     private List<Vector3> seekPosition = new List<Vector3>();
     int state = 0;
     private Vector3 velocity;

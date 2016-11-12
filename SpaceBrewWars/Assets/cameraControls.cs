@@ -16,7 +16,7 @@ public class cameraControls : MonoBehaviour {
     private bool mouseDown;
     private bool mouseRight;
     private bool mouseLeft;
-
+        
     public Vector3 worldCenter;
     public float worldRad;
 
@@ -215,8 +215,6 @@ public class cameraControls : MonoBehaviour {
         worldRad = rad;
         yLevel = levels;
     }
-
-
 
 
 }
