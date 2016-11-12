@@ -25,8 +25,8 @@ public class EntityManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+
+    }
 
     void Create()
     {
@@ -34,24 +34,15 @@ public class EntityManager : MonoBehaviour {
         pubs = new GameObject[10];
 
         // TODO: make generation more random
-        for (int i = 0; i < brews.Length - 1; i++)
+        for (int i = 0; i < brews.Length; i++)
         {
             brews[i] = (GameObject)Instantiate(brewPrefab, new Vector3(i, 10, i), Quaternion.identity);
         }
 
-        for(int i = 0; i < pubs.Length - 1; i++)
+        for(int i = 0; i < pubs.Length; i++)
         {
             pubs[i] = (GameObject)Instantiate(pubPrefab, new Vector3(i, 0, i), Quaternion.identity);
         }
     }
 
-    void Find()
-    {
-
-    }
-
-    void GetSelected()
-    {
-
-    }
 }
