@@ -82,7 +82,7 @@ public class cameraControls : MonoBehaviour {
             }
         }
 
-        if(yTransition == true)
+        if (yTransition == true)
         {
             Vector3 toSeek = new Vector3(transform.position.x, yLevel[indexY], transform.position.z);
             Vector3 go = (Vector3.Normalize(toSeek - transform.position) * transitionSpeed) * Time.deltaTime;
@@ -91,9 +91,11 @@ public class cameraControls : MonoBehaviour {
             if(within(transform.position.y, yLevel[indexY]))
             {
                 yTransition = false;
-            }
-
+            }     
         }
+
+        // removes floating point error which creates flickering
+        transform.position = new Vector3(transform.position.x, (float)((int)transform.position.y), transform.position.z);
     }
 
     void FixedUpdate()
@@ -203,7 +205,7 @@ public class cameraControls : MonoBehaviour {
 
     bool within(float current, float target)
     {
-        if(Mathf.Abs(current - target) < 0.1)
+        if(Mathf.Abs(current - target) < 0.001f)
         {
             return true;
         }
