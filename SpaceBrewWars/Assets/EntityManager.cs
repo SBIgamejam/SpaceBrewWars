@@ -98,7 +98,7 @@ public class EntityManager : MonoBehaviour {
             {
                 for (int i = 0; i < saboteurs.Length; ++i)
                 {
-                    pubs[i].GetComponent<Saboteur>().destory(selectObjectTransform);
+                    pubs[i].GetComponent<Saboteur>().destroy(selectObjectTransform);
                 }
             }
         }
