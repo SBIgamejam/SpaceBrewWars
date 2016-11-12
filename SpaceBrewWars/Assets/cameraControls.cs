@@ -24,8 +24,8 @@ public class cameraControls : MonoBehaviour {
     public List<float> yLevel = new List<float>();
     bool yTransition = false;
 
-    void Start () {
-
+    void Start ()
+    {
         transform.rotation = Quaternion.AngleAxis(45.0f, new Vector3(1, 0, 0));
         keyRight = keyLeft = keyUp = keyDown = false;
         mouseUp = mouseDown = mouseLeft = mouseRight = false;
@@ -35,7 +35,6 @@ public class cameraControls : MonoBehaviour {
         yLevel.Add(6.0f);
         yLevel.Add(5.0f);
         yLevel.Add(4.0f);
-
     }
 	
 	// Update is called once per frame

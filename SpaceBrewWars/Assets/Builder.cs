@@ -13,14 +13,16 @@ public class Builder : MonoBehaviour {
     private Vector3 velocity;
     private float speed;
     public GameObject world;
+    private float health;
 
 
 
     // Use this for initialization
     void Start () {
 
-	    
-	}
+        health = 200;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
