@@ -13,7 +13,6 @@ public class Pub : MonoBehaviour {
     // Use this for initialization
     void Start() {
         world = GameObject.FindGameObjectWithTag("World");
-        towerPrefab = GameObject.FindGameObjectWithTag("Tower");
         ecoValue = 10;
         tower = null;
         BuildTower();
@@ -26,7 +25,6 @@ public class Pub : MonoBehaviour {
 
     public void BuildTower()
     {
-        Debug.Log(this.transform.position);
         tower = (GameObject)Instantiate(towerPrefab, this.transform.position + new Vector3(0,0.7f,0), Quaternion.identity);
     }
 

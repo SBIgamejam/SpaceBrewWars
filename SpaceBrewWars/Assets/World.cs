@@ -15,6 +15,7 @@ public class World : MonoBehaviour {
     public GameObject[] players;
     public GameObject playerPrefab;
 
+
 	// Use this for initialization
 	void Start () {
         // make sure the radius and levels are not zero
