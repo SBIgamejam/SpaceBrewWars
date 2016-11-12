@@ -22,12 +22,12 @@ public class Pub : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        //world.GetComponent<World>().players[owner].GetComponent<Player>().CollectIncome(ecoValue * Time.deltaTime);
+        world.GetComponent<World>().players[owner].GetComponent<Player>().CollectIncome(ecoValue * Time.deltaTime);
     }
 
     public void BuildTower()
     {
-        //tower = (GameObject)Instantiate(towerPrefab, this.transform.position + new Vector3(0,0.7f,0), Quaternion.identity);
+        tower = (GameObject)Instantiate(towerPrefab, this.transform.position + new Vector3(0,0.7f,0), Quaternion.identity);
     }
 
     public void UpgradeTower()
