@@ -16,6 +16,7 @@ public class Saboteur : MonoBehaviour {
     public GameObject world;
     private float health;
     private float sepRad;
+    public int PlayerID;
 
     // Use this for initialization
     void Start () {
@@ -128,6 +129,12 @@ public class Saboteur : MonoBehaviour {
 
     public void destroy(Transform buildTarget)
     {
+
+    }
+
+   public void setteam(int PId)
+    {
+        PlayerID = PId;
 
     }
 }

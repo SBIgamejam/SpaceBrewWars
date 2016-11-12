@@ -10,6 +10,7 @@ public class Pub : MonoBehaviour {
     public GameObject tower;
     public GameObject towerPrefab;
     private bool selected;
+    public int PlayerID;
 
     // Use this for initialization
     void Start() {
@@ -48,5 +49,10 @@ public class Pub : MonoBehaviour {
     public void unselect()
     {
         selected = false;
+    }
+
+    public void setteam(int PId)
+    {
+        PlayerID = PId;
     }
 }

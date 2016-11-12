@@ -8,6 +8,7 @@ public class Brewery : MonoBehaviour {
     public int owner;
     public GameObject world;
     private bool selected;
+    public int playerID;
 
     // Use this for initialization
     void Start () {
@@ -27,4 +28,10 @@ public class Brewery : MonoBehaviour {
     {
         selected = false;
     }
+
+    public void setteam(int PId)
+    {
+        playerID = PId;
+    }
+     
 }

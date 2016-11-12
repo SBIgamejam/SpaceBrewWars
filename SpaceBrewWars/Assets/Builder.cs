@@ -15,6 +15,7 @@ public class Builder : MonoBehaviour {
     public GameObject world;
     private float health;
     float sepRad;
+    int playerID;
 
 
     // Use this for initialization
@@ -129,8 +130,15 @@ public class Builder : MonoBehaviour {
         
     }
 
+
     public void build(Transform buildTarget)
     {
+
+    }
+
+    public void setteam(int PId)
+    {
+        playerID = PId;
 
     }
 
