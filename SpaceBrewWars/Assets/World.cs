@@ -27,8 +27,6 @@ public class World : MonoBehaviour {
         if (numberOfLevels == 0)
             numberOfLevels = 1;
 
-        players = new GameObject[numberOfPlayers];
-
         for(int i = 0; i < numberOfPlayers; i++)
         {
             players[i] = (GameObject) Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity);
