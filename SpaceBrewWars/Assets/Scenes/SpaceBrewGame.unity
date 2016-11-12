@@ -213,7 +213,6 @@ GameObject:
   - 92: {fileID: 179737545}
   - 124: {fileID: 179737544}
   - 81: {fileID: 179737543}
-  - 114: {fileID: 179737548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -304,9 +303,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb6ba25d66318544b31322075bce3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0, z: 0}
   owner: 0
   alive: 0
+  pathfinder: {fileID: 0}
+  world: {fileID: 0}
 --- !u!1 &367369160
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +406,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 492160, guid: 1b1bad746753d654aa87d518b9634abe, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 33
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 492160, guid: 1b1bad746753d654aa87d518b9634abe, type: 2}
       propertyPath: m_LocalRotation.x
@@ -427,6 +427,18 @@ Prefab:
     - target: {fileID: 492160, guid: 1b1bad746753d654aa87d518b9634abe, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 492160, guid: 1b1bad746753d654aa87d518b9634abe, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 492160, guid: 1b1bad746753d654aa87d518b9634abe, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 492160, guid: 1b1bad746753d654aa87d518b9634abe, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11487274, guid: 1b1bad746753d654aa87d518b9634abe, type: 2}

@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 492160}
   - 33: {fileID: 3395072}
   - 23: {fileID: 2370212}
-  - 114: {fileID: 11487274}
   - 65: {fileID: 6552556}
+  - 114: {fileID: 11499074}
   m_Layer: 0
   m_Name: Saboteur
   m_TagString: Untagged
@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 339, y: 0, z: 1.31}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalPosition: {x: 62, y: 0, z: 119}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +77,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1051.6924, y: 330.93762, z: 1301.8206}
   m_Center: {x: 0, y: 63.12874, z: 0}
---- !u!114 &11487274
+--- !u!114 &11499074
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -88,9 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb6ba25d66318544b31322075bce3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0, z: 0}
   owner: 0
   alive: 0
+  pathfinder: {fileID: 0}
+  world: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
