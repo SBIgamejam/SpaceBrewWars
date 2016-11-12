@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class cameraControls : MonoBehaviour {
 
-    private float speed = 10.0f;
-    private float transitionSpeed = 2.0f;
+    private float speed = 30.0f;
+    private float transitionSpeed = 75.0f;
 
     private bool keyRight;
     private bool keyLeft;
@@ -30,11 +30,12 @@ public class cameraControls : MonoBehaviour {
         keyRight = keyLeft = keyUp = keyDown = false;
         mouseUp = mouseDown = mouseLeft = mouseRight = false;
 
-        yLevel.Add(8.0f);
-        yLevel.Add(7.0f);
-        yLevel.Add(6.0f);
-        yLevel.Add(5.0f);
-        yLevel.Add(4.0f);
+        yLevel.Add(200.0f);
+        yLevel.Add(200.0f * 2.0f);
+        yLevel.Add(200.0f * 3.0f);
+        yLevel.Add(200.0f * 4.0f);
+        yLevel.Add(200.0f * 5.0f);
+
     }
 	
 	// Update is called once per frame
@@ -81,7 +82,7 @@ public class cameraControls : MonoBehaviour {
             }
         }
 
-        if(yTransition == true)
+        if (yTransition == true)
         {
             Vector3 toSeek = new Vector3(transform.position.x, yLevel[indexY], transform.position.z);
             Vector3 go = (Vector3.Normalize(toSeek - transform.position) * transitionSpeed) * Time.deltaTime;
@@ -90,11 +91,16 @@ public class cameraControls : MonoBehaviour {
             if(within(transform.position.y, yLevel[indexY]))
             {
                 yTransition = false;
-            }
-
+            }     
         }
 
+        // removes floating point error which creates flickering
+        transform.position = new Vector3(transform.position.x, (float)((int)transform.position.y), transform.position.z);
+    }
 
+    void FixedUpdate()
+    {
+        screenSelection();
     }
 
     void keyboardControls()
@@ -199,7 +205,7 @@ public class cameraControls : MonoBehaviour {
 
     bool within(float current, float target)
     {
-        if(Mathf.Abs(current - target) < 0.1)
+        if(Mathf.Abs(current - target) < 0.001f)
         {
             return true;
         }
@@ -208,12 +214,33 @@ public class cameraControls : MonoBehaviour {
         return false;
     }
 
+    void screenSelection()
+    {
+        // ray from mouse left click hit object
+        if (Input.GetMouseButtonDown(0))
+        {
+            print("mouse clicked");
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            Debug.Log(mouseRay.origin);
+            Debug.Log(mouseRay.direction);
+
+            if (Physics.Raycast(mouseRay, out hit, 2500.0f))
+            {
+                Debug.Log("HIT");
+            }
+
+
+                // set isSelected in hit object
+            }
+    }
+
+
     public void worlddata(Vector3 wCenter, float rad, List<float> levels)
     {
         worldCenter = wCenter;
         worldRad = rad;
         yLevel = levels;
     }
-
 
 }
