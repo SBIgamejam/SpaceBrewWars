@@ -15,6 +15,6 @@ public class Brewery : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        world.GetComponent<World>().players[owner].CollectDebt(ecoCost * Time.deltaTime);
+        world.GetComponent<World>().players[owner].GetComponent<Player>().CollectDebt(ecoCost * Time.deltaTime);
     }
 }
