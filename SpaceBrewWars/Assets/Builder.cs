@@ -36,6 +36,7 @@ public class Builder : MonoBehaviour {
         else if(state == 1) //seek
         {
             seek(seekPosition[0]);
+            separation();
 
             velocity = Vector3.Normalize(velocity) * speed;
 
@@ -52,6 +53,7 @@ public class Builder : MonoBehaviour {
         else if (state == 2) // build
         {
             seek(seekPosition[0]);
+            separation();
 
             velocity = Vector3.Normalize(velocity) * speed;
 
