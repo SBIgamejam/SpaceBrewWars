@@ -120,11 +120,14 @@ public class Saboteur : MonoBehaviour {
         sep *= -1;
         velocity += Vector3.Normalize(sep);
     }
-
-
     void seek(Vector3 seekPos)
     {
         velocity += Vector3.Normalize(seekPos - transform.position);
+
+    }
+
+    public void destroy(Transform buildTarget)
+    {
 
     }
 }

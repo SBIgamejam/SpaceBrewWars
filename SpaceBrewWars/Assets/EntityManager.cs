@@ -24,9 +24,9 @@ public class EntityManager : MonoBehaviour {
         // generate the world
         Create();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         // ray from mouse left click hit object
         if (Input.GetMouseButtonDown(0))
         {
@@ -36,9 +36,9 @@ public class EntityManager : MonoBehaviour {
             // set the selected
             if (selectObjectTransform.GetComponent<Pub>())
             {
-                for(int i = 0; i < pubs.Length; ++i)
+                for (int i = 0; i < pubs.Length; ++i)
                 {
-                    if(selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
+                    if (selectObjectTransform.Equals(pubs[i].GetComponent<Transform>()))
                     {
                         pubs[i].GetComponent<Pub>().setSelected();
                     }
@@ -75,6 +75,30 @@ public class EntityManager : MonoBehaviour {
                     {
                         pubs[i].GetComponent<Brewery>().setSelected();
                     }
+                }
+            }
+        }
+
+        // ray from mouse right click hit object
+        if (Input.GetMouseButtonDown(1))
+        {
+            Transform selectObjectTransform = Camera.main.GetComponent<cameraControls>().screenSelection();
+            Debug.Log(selectObjectTransform.transform.name);
+            Debug.Log("right click");
+
+            if (selectObjectTransform.GetComponent<Builder>())
+            {
+                for (int i = 0; i < builders.Length; ++i)
+                {
+                   pubs[i].GetComponent<Builder>().build(selectObjectTransform);
+                }
+            }
+
+            if (selectObjectTransform.GetComponent<Saboteur>())
+            {
+                for (int i = 0; i < saboteurs.Length; ++i)
+                {
+                    pubs[i].GetComponent<Saboteur>().destory(selectObjectTransform);
                 }
             }
         }
