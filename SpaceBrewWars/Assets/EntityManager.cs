@@ -102,7 +102,7 @@ public class EntityManager : MonoBehaviour {
     }
 
 
-    List<Vector3> setnearme(Vector3 Pos, float rad)
+    public List<Vector3> setnearme(Vector3 Pos, float rad)
     {
         List<Vector3> nearMe = new List<Vector3>();
 

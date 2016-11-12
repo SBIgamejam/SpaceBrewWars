@@ -15,24 +15,34 @@ public class Saboteur : MonoBehaviour {
     private float speed;
     public GameObject world;
     private float health;
+    private float sepRad;
 
     // Use this for initialization
     void Start () {
 
         health = 100;
-	
-	}
+        state = 0;
+        sepRad = 26;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
         if (state == 0) //idel;
         {
-
+            velocity = new Vector3(0, 0, 0);
         }
         else if (state == 1) //seek
         {
+            seek(seekPosition[0]);
 
+            velocity = Vector3.Normalize(velocity) * speed;
+
+            if (Vector3.Distance(transform.position, seekPosition[0]) < 3)
+            {
+                seekPosition.Remove(seekPosition[0]);
+            }
 
             if (seekPosition.Count == 0)
             {
@@ -41,16 +51,34 @@ public class Saboteur : MonoBehaviour {
         }
         else if (state == 2) // build
         {
+            seek(seekPosition[0]);
 
+            velocity = Vector3.Normalize(velocity) * speed;
+
+            if (Vector3.Distance(transform.position, seekPosition[0]) < 3)
+            {
+                seekPosition.Remove(seekPosition[0]);
+            }
+
+            if (Vector3.Distance(transform.position, seekPosition[0]) < 3)
+            {
+                seekPosition.Remove(seekPosition[0]);
+            }
+
+            if (seekPosition.Count == 0)
+            {
+
+            }
         }
+
+        transform.position += velocity * Time.deltaTime;
 
     }
 
 
     void actions(Vector3 targetlocation, bool action)
     {
-        //pathfind the target location
-        //set the correct state 
+        pathfinder.GetComponent<Pathfinder>().returnPath(transform.position, targetlocation);
 
         if (action == false)
         {
@@ -60,6 +88,8 @@ public class Saboteur : MonoBehaviour {
         {
             state = 2;
         }
+
+
 
     }
 
@@ -76,8 +106,23 @@ public class Saboteur : MonoBehaviour {
 
     void separation()
     {
+        List<Vector3> sepFrom = world.GetComponent<World>().entityManager.GetComponent<EntityManager>().setnearme(transform.position, sepRad);
+        Vector3 sep = new Vector3(0, 0, 0);
+
+        for (int i = 0; i < sepFrom.Count; i++)
+        {
+            sep += sepFrom[i] - transform.position;
+        }
+
+        sep /= sepFrom.Count;
+        sep *= -1;
+        velocity += Vector3.Normalize(sep);
+    }
 
 
+    void seek(Vector3 seekPos)
+    {
+        velocity += Vector3.Normalize(seekPos - transform.position);
 
     }
 }
