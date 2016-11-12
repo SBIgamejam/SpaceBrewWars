@@ -12,6 +12,7 @@ GameObject:
   - 65: {fileID: 6509294}
   - 23: {fileID: 2320372}
   - 114: {fileID: 11448334}
+  - 65: {fileID: 6553672}
   m_Layer: 0
   m_Name: Pub
   m_TagString: Pub
@@ -26,8 +27,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.65, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -77.4, y: -53.4, z: 48.3}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -64,7 +65,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195846}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: bb8c4761d80ccdd45a96a9b543c53271, type: 3}
 --- !u!65 &6509294
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -77,6 +78,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6553672
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195846}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1866.2324, y: 1071.5432, z: 1686.04}
+  m_Center: {x: 0, y: 535.7716, z: 0}
 --- !u!114 &11448334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,6 +103,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ecoValue: 0
   owner: 0
+  world: {fileID: 0}
+  tower: {fileID: 0}
+  towerPrefab: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

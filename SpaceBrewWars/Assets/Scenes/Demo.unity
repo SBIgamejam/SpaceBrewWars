@@ -295,6 +295,7 @@ MonoBehaviour:
   locationRadius: 10
   selectionRadius: 10
   numberOfLevels: 5
+  entityManager: {fileID: 1045494318}
   numberOfPlayers: 2
   players:
   - {fileID: 0}
@@ -328,6 +329,52 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1160.6066, y: 1842.7688, z: 1159.3453}
   m_Center: {x: 0, y: 921.3844, z: 0}
+--- !u!1001 &425652262
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 405632, guid: 82cb9e0a3eabe844091be1aff6b9fc04, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -196.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 405632, guid: 82cb9e0a3eabe844091be1aff6b9fc04, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -53.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 405632, guid: 82cb9e0a3eabe844091be1aff6b9fc04, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 48.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 405632, guid: 82cb9e0a3eabe844091be1aff6b9fc04, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 405632, guid: 82cb9e0a3eabe844091be1aff6b9fc04, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 405632, guid: 82cb9e0a3eabe844091be1aff6b9fc04, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 405632, guid: 82cb9e0a3eabe844091be1aff6b9fc04, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 405632, guid: 82cb9e0a3eabe844091be1aff6b9fc04, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 11418582, guid: 82cb9e0a3eabe844091be1aff6b9fc04, type: 2}
+      propertyPath: world
+      value: 
+      objectReference: {fileID: 367369160}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 82cb9e0a3eabe844091be1aff6b9fc04, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &444691898
 Prefab:
   m_ObjectHideFlags: 0
@@ -552,6 +599,7 @@ MonoBehaviour:
   brewPrefab: {fileID: 151036, guid: cfe7bcaa51a43c442a559108aa6b5c87, type: 2}
   builderPrefab: {fileID: 195846, guid: e4cecb6f4e594e84e840dfb9dc8f7d98, type: 2}
   saboteurPrefab: {fileID: 195846, guid: e4cecb6f4e594e84e840dfb9dc8f7d98, type: 2}
+  masterBrewPrefab: {fileID: 116704, guid: 82cb9e0a3eabe844091be1aff6b9fc04, type: 2}
 --- !u!4 &1045494320
 Transform:
   m_ObjectHideFlags: 0

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class cameraControls : MonoBehaviour {
 
-    private float speed = 30.0f;
-    private float transitionSpeed = 75.0f;
+    private float speed = 50.0f;
+    private float transitionSpeed = 100.0f;
 
     private bool keyRight;
     private bool keyLeft;
@@ -30,11 +30,11 @@ public class cameraControls : MonoBehaviour {
         keyRight = keyLeft = keyUp = keyDown = false;
         mouseUp = mouseDown = mouseLeft = mouseRight = false;
 
-        yLevel.Add(200.0f);
-        yLevel.Add(200.0f * 2.0f);
-        yLevel.Add(200.0f * 3.0f);
-        yLevel.Add(200.0f * 4.0f);
-        yLevel.Add(200.0f * 5.0f);
+        yLevel.Add(400.0f);
+        yLevel.Add(400.0f * 2.0f);
+        yLevel.Add(400.0f * 3.0f);
+        yLevel.Add(400.0f * 4.0f);
+        yLevel.Add(400.0f * 5.0f);
 
     }
 	
@@ -49,19 +49,19 @@ public class cameraControls : MonoBehaviour {
         {
             transform.position += (new Vector3(0, 0, 1) * speed) * Time.deltaTime;
 
-            if(Vector3.Distance(worldCenter,transform.position) > worldRad)
-            {
-                transform.position -= (new Vector3(0, 0, 1) * speed) * Time.deltaTime;
-            }
+            ///if(Vector3.Distance(worldCenter,transform.position) > worldRad)
+            //{
+              //  transform.position -= (new Vector3(0, 0, 1) * speed) * Time.deltaTime;
+            //}
         }
         if (keyDown == true || mouseDown == true)
         {
             transform.position += (new Vector3(0, 0, -1) * speed) * Time.deltaTime;
 
-            if (Vector3.Distance(worldCenter, transform.position) > worldRad)
-            {
-                transform.position += (new Vector3(0, 0, 1) * speed) * Time.deltaTime;
-            }
+           /// if (Vector3.Distance(worldCenter, transform.position) > worldRad)
+           // {
+           //     transform.position += (new Vector3(0, 0, 1) * speed) * Time.deltaTime;
+            //}
         }
         if (keyRight == true || mouseRight == true)
         {
