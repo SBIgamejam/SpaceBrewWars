@@ -6,8 +6,7 @@ public class World : MonoBehaviour {
     public int locationRadius = 10; // the radius of locations in the world
     public int selectionRadius = 10; // the radius for selecting buildings and units
     public int numberOfLevels = 3; // the number of depth levels that world contains
-    //public GameObject camera;
-    //public EntityManager entityManager;
+    public GameObject entityManager;
     //public PathManager pathManager;
     //public AIManager aiManager;
     //public UIManager uiManagerl

@@ -7,6 +7,7 @@ public class EntityManager : MonoBehaviour {
     public GameObject brewPrefab;
     public GameObject builderPrefab;
     public GameObject saboteurPrefab;
+    public GameObject masterBrewPrefab;
 
     GameObject[] pubs;
     GameObject[] brews;
@@ -69,7 +70,7 @@ public class EntityManager : MonoBehaviour {
         pubs[21] = (GameObject)Instantiate(pubPrefab, new Vector3(750.0f, lvl2, 148.0f), Quaternion.identity);
         pubs[22] = (GameObject)Instantiate(pubPrefab, new Vector3(1000.0f, lvl2, 650.0f), Quaternion.identity);
         pubs[23] = (GameObject)Instantiate(pubPrefab, new Vector3(648.0f, lvl2, 1230.0f), Quaternion.identity);
-        pubs[24] = (GameObject)Instantiate(pubPrefab, new Vector3(300.0f, lvl2, 600.0f), Quaternion.identity); ///< middle
+        pubs[24] = (GameObject)Instantiate(masterBrewPrefab, new Vector3(300.0f, lvl2, 600.0f), Quaternion.identity); ///< middle
         pubs[25] = (GameObject)Instantiate(pubPrefab, new Vector3(-245.0f, lvl2, 112.0f), Quaternion.identity);
         pubs[26] = (GameObject)Instantiate(pubPrefab, new Vector3(-598.0f, lvl2, 479.0f), Quaternion.identity);
         pubs[27] = (GameObject)Instantiate(pubPrefab, new Vector3(-865.0f, lvl2, 912.0f), Quaternion.identity);
