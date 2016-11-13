@@ -8,8 +8,8 @@ public class Builder : MonoBehaviour {
     public bool alive; // is this ship alive? if not it need to be cleaned up and removed from the world.
     private bool selected;
     public GameObject pathfinder;
-    private List<Vector3> seekPosition = new List<Vector3>();
-    int state;
+	public List<Vector3> seekPosition = new List<Vector3>();
+    public int state;
     private Vector3 velocity;
     private float speed;
     public GameObject world;
@@ -140,6 +140,19 @@ public class Builder : MonoBehaviour {
     public void setteam(int PId)
     {
         playerID = PId;
+
+    }
+
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            world.GetComponent<World>().selectedrightobject = gameObject;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            world.GetComponent<World>().selectedleftobject = gameObject;
+        }
 
     }
 

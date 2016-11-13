@@ -30,4 +30,15 @@ public class Link : MonoBehaviour {
     {
         owner = playerID;
     }
+    void OnMouseDown()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            //world.GetComponent<World>().selectedleftobject = gameObject;
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            //world.GetComponent<World>().selectedrightobject = gameObject;
+        }
+    }
 }

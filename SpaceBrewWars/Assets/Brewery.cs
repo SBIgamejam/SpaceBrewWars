@@ -35,12 +35,16 @@ public class Brewery : MonoBehaviour {
     }
 
 
-    void OnMouseDown()
+    void OnMouseOver()
     {
+        if (Input.GetMouseButtonDown(1))
+        {
+            world.GetComponent<World>().selectedrightobject = gameObject;
+        }
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("meme");
-            world.GetComponent<World>().selectedobject = gameObject;
+            world.GetComponent<World>().selectedleftobject = gameObject;
         }
+
     }
 }

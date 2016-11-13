@@ -15,36 +15,47 @@ public class Pathfinder : MonoBehaviour {
         float lvl0 = 0.0f;
 
         nodes node1 = new nodes();
+		node1.startup ();
         node1.position = new Vector3(0.0f, lvl0, 0.0f);
 
         nodes node2 = new nodes();
+		node2.startup ();
         node2.position = new Vector3(100.0f, lvl0, 100.0f);
 
         nodes node3 = new nodes();
+		node3.startup ();
         node3.position = new Vector3(-200.0f, lvl0, 250.0f);
 
         nodes node4 = new nodes();
+		node4.startup ();
         node4.position = new Vector3(50.0f, lvl0, 380.0f);
 
         nodes node5 = new nodes();
+		node5.startup ();
         node5.position = new Vector3(300.0f, lvl0, 400.0f);
 
         nodes node6 = new nodes();
+		node6.startup ();
         node6.position = new Vector3(0, lvl0, 500);
 
         nodes node7 = new nodes();
+		node7.startup ();
         node7.position = new Vector3(-50.0f, lvl0, 600.0f);
 
         nodes node8 = new nodes();
+		node8.startup ();
         node8.position = new Vector3(150.0f, lvl0, 670.0f);
 
         nodes node9 = new nodes();
+		node9.startup ();
         node9.position = new Vector3(-200.0f, lvl0, 700.0f);
 
         nodes node10 = new nodes();
+		node10.startup ();
         node10.position = new Vector3(-100.0f, lvl0, 920.0f);
 
         nodes node11 = new nodes();
+		node11.startup ();
         node11.position = new Vector3(0.0f, lvl0, 1000.0f);
 
         node1.addConnection(node2);
@@ -103,10 +114,11 @@ public class Pathfinder : MonoBehaviour {
         List<Vector3> thePath = new List<Vector3>();
         List<nodes> pathOfNodes = new List<nodes>();
 
+        Debug.Log("PATHFINDER");
         nodes startnode = findclosest(start);
         nodes endnode = findclosest(end);
 
-        thePath.Add(startnode.transform.position);
+		thePath.Add(startnode.position);
         openlist.Add(startnode);
         int f = 10000000;
         bool reachdest = false;
@@ -130,7 +142,7 @@ public class Pathfinder : MonoBehaviour {
 
                 for (int i = 0; i < openlist.Count; i++)
                 {
-                    nodes nodedata = openlist[i].GetComponent<nodes>(); //get the best node from the openlist (should be the closest)
+					nodes nodedata = openlist [i]; //get the best node from the openlist (should be the closest)
 
                     if (nodedata.F < f)
                     {
@@ -150,12 +162,15 @@ public class Pathfinder : MonoBehaviour {
                 for(int i = 0; i < connections.Count; i++)
                 {
                     nodes nodeCons = connections[i];
-                    nodeCons.costsetup(endnode, bestscoreobject); //set up the cost and parent of all the connected nodes
-                    openlist.Add(connections[i]);
+                    nodeCons.costsetup(endnode, bestscoreobject); //set up the cost and parent of all the connected nodes#
+					if (nodeCons.inclosed != true) {
+						openlist.Add (connections [i]);
+					}
                 }
 
 
                 clostlis.Add(bestscoreobject); //now add the node we just checked to the closed list
+				bestscoreobject.inclosed = true;
                 openlist.Remove(bestscoreobject); // and remove it from the open list
             }
 
@@ -182,7 +197,10 @@ public class Pathfinder : MonoBehaviour {
         }
 
 
-
+        for(int i = 0; i < thePath.Count; i++)
+        {
+            Debug.Log(thePath[i]);
+        }
 
         return thePath;
 
@@ -191,17 +209,19 @@ public class Pathfinder : MonoBehaviour {
 
     private nodes findclosest(Vector3 pos)
     {
-        nodes closestNode = null;
+		nodes closestNode = new nodes();
 
         float distance = 100000;
 
 
         for(int i = 0; i < Nodes.Count; i++)
         {
-            float closest = Vector3.Distance(Nodes[i].transform.position, pos);
-            if(closest < distance)
+            float closest = Vector3.Distance(Nodes[i].position, pos);
+            
+            if (closest < distance)
             {
                 closestNode = Nodes[i];
+				closestNode.myPartent = Nodes[i];
                 distance = closest;
             }
         }
@@ -214,7 +234,7 @@ public class Pathfinder : MonoBehaviour {
     {
         for (int i = 0; i < Nodes.Count; i++)
         {
-            Nodes[i].GetComponent<nodes>().reset();
+			Nodes [i].reset ();
         }
     }
 
