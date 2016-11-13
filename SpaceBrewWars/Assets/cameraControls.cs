@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class cameraControls : MonoBehaviour {
 
-    private float speed = 50.0f;
-    private float transitionSpeed = 100.0f;
+    private float speed = 300.0f;
+    private float transitionSpeed = 300.0f;
 
     private bool keyRight;
     private bool keyLeft;
@@ -29,6 +29,10 @@ public class cameraControls : MonoBehaviour {
         transform.rotation = Quaternion.AngleAxis(45.0f, new Vector3(1, 0, 0));
         keyRight = keyLeft = keyUp = keyDown = false;
         mouseUp = mouseDown = mouseLeft = mouseRight = false;
+        indexY = 0;
+
+
+        transform.position = new Vector3(0,(400.0f),0);
 
         yLevel.Add(400.0f);
         yLevel.Add(400.0f * 2.0f);
@@ -184,15 +188,15 @@ public class cameraControls : MonoBehaviour {
     void zoomsetting()
     {
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0 && yTransition == false && indexY != yLevel.Count -1 )
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && yTransition == false && indexY != 0 )
         {
-            indexY++;
+            indexY--;
             yTransition = true;
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") < 0 && yTransition == false && indexY != 0)
+        if (Input.GetAxis("Mouse ScrollWheel") < 0 && yTransition == false && indexY != yLevel.Count - 1)
         {
-            indexY--;
+            indexY++;
             yTransition = true;
         }
 

@@ -6,11 +6,11 @@ using System.Collections.Generic;
 public class nodes : MonoBehaviour {
 
     public Vector3 position;
-    public List<GameObject> Connnections = new List<GameObject>();
+    public List<nodes> Connnections = new List<nodes>();
     public int F;
     public int G;
     public int H;
-    public GameObject myPartent;
+    public nodes myPartent;
     public int preG;
  
     // Use this for initialization
@@ -33,7 +33,7 @@ public class nodes : MonoBehaviour {
         return position;
     }
 
-    public List<GameObject> getnodes()
+    public List<nodes> getnodes()
     {
         return Connnections;
     }
@@ -43,7 +43,7 @@ public class nodes : MonoBehaviour {
         position = test;
     }
 
-    public void addConnection(GameObject addnode)
+    public void addConnection(nodes addnode)
     {
         Connnections.Add(addnode);
     }
@@ -57,11 +57,11 @@ public class nodes : MonoBehaviour {
         preG = 1000000;
     }
     
-    public void costsetup(GameObject destination, GameObject parent)
+    public void costsetup(nodes destination, nodes parent)
     {
-        nodes nodedata = destination.GetComponent<nodes>();
+        nodes nodedata = destination;
 
-        nodes parentnode = parent.GetComponent<nodes>();
+        nodes parentnode = parent;
 
         int cost = (int)Mathf.Abs(Vector3.Distance(parentnode.getPos(), position));
 

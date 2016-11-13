@@ -6,13 +6,15 @@ public class World : MonoBehaviour {
     public int locationRadius = 10; // the radius of locations in the world
     public int selectionRadius = 10; // the radius for selecting buildings and units
     public int numberOfLevels = 3; // the number of depth levels that world contains
-    public GameObject entityManager;
-    //public PathManager pathManager;
+
     //public AIManager aiManager;
     //public UIManager uiManagerl
     public int numberOfPlayers;
     public GameObject[] players;
     public GameObject playerPrefab;
+    public EntityManager myentmanager;
+
+    public GameObject selectedobject;
 
 
 	// Use this for initialization
@@ -34,7 +36,10 @@ public class World : MonoBehaviour {
         }
 
         WorldGeneration();
-	}
+
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {

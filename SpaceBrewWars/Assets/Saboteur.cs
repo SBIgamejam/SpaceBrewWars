@@ -8,7 +8,6 @@ public class Saboteur : MonoBehaviour {
     public int owner; // playerID, which player owns it
     public bool alive; // is this ship alive? if not it need to be cleaned up and removed from the world.
     private bool selected;
-    public GameObject pathfinder;
     private List<Vector3> seekPosition = new List<Vector3>();
     int state = 0;
     private Vector3 velocity;
@@ -24,7 +23,7 @@ public class Saboteur : MonoBehaviour {
         health = 100;
         state = 0;
         sepRad = 26;
-
+        world = GameObject.FindGameObjectWithTag("World");
     }
 	
 	// Update is called once per frame
@@ -81,7 +80,7 @@ public class Saboteur : MonoBehaviour {
 
     void actions(Vector3 targetlocation, bool action)
     {
-        pathfinder.GetComponent<Pathfinder>().returnPath(transform.position, targetlocation);
+        //pathfinder.GetComponent<Pathfinder>().returnPath(transform.position, targetlocation);
 
         if (action == false)
         {
@@ -91,25 +90,13 @@ public class Saboteur : MonoBehaviour {
         {
             state = 2;
         }
-
-
-
+ 
     }
 
-
-
-    public void setSelected()
-    {
-        selected = true;
-    }
-    public void unselect()
-    {
-        selected = false;
-    }
 
     void separation()
     {
-        List<Vector3> sepFrom = world.GetComponent<World>().entityManager.GetComponent<EntityManager>().setnearme(transform.position, sepRad);
+     /*   List<Vector3> sepFrom = world.GetComponent<World>().entityManager.GetComponent<EntityManager>().setnearme(transform.position, sepRad);
         Vector3 sep = new Vector3(0, 0, 0);
 
         for (int i = 0; i < sepFrom.Count; i++)
@@ -119,7 +106,7 @@ public class Saboteur : MonoBehaviour {
 
         sep /= sepFrom.Count;
         sep *= -1;
-        velocity += Vector3.Normalize(sep);
+        velocity += Vector3.Normalize(sep);*/
     }
     void seek(Vector3 seekPos)
     {
@@ -135,6 +122,15 @@ public class Saboteur : MonoBehaviour {
    public void setteam(int PId)
     {
         PlayerID = PId;
-
     }
+
+    void OnMouseDown()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("meme");
+            world.GetComponent<World>().selectedobject = gameObject;
+        }
+    }
+
 }
