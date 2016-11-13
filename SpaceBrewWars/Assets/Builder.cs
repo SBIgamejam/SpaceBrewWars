@@ -24,6 +24,7 @@ public class Builder : MonoBehaviour {
         health = 200;
         state = 0;
         sepRad = 45;
+        world = GameObject.FindGameObjectWithTag("World");
 
     }
 	
@@ -111,7 +112,7 @@ public class Builder : MonoBehaviour {
 
     void separation()
     {
-        List<Vector3> sepFrom = world.GetComponent<World>().entityManager.GetComponent<EntityManager>().setnearme(transform.position, sepRad);
+      /*  List<Vector3> sepFrom = world.GetComponent<World>().entityManager.GetComponent<EntityManager>().setnearme(transform.position, sepRad);
         Vector3 sep = new Vector3(0, 0, 0);
 
         for (int i = 0; i < sepFrom.Count; i++)
@@ -121,7 +122,7 @@ public class Builder : MonoBehaviour {
 
         sep /= sepFrom.Count;
         sep *= -1;
-        velocity += Vector3.Normalize(sep);
+        velocity += Vector3.Normalize(sep);*/
     }
 
     void seek(Vector3 seekPos)

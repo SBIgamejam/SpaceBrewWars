@@ -33,5 +33,14 @@ public class Brewery : MonoBehaviour {
     {
         playerID = PId;
     }
-     
+
+
+    void OnMouseDown()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("meme");
+            world.GetComponent<World>().selectedobject = gameObject;
+        }
+    }
 }
