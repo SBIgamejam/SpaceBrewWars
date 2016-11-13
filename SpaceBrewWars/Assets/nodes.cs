@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class nodes : MonoBehaviour {
+public class nodes {
 
     public Vector3 position;
     public List<nodes> Connnections = new List<nodes>();
@@ -12,21 +12,17 @@ public class nodes : MonoBehaviour {
     public int H;
     public nodes myPartent;
     public int preG;
- 
-    // Use this for initialization
-    void Start () {
-        myPartent = null;
-        F = 0;
-        G = 0;
-        H = 0;
-        preG = 1000000;
-    }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	public bool inclosed;
 
+	public void startup()
+	{
+		myPartent = null;
+		F = 0;
+		G = 0;
+		H = 0;
+		preG = 1000000;
+		inclosed = false;
+	}
 
     public Vector3 getPos()
     {
@@ -55,6 +51,7 @@ public class nodes : MonoBehaviour {
         G = 0;
         H = 0;
         preG = 1000000;
+		inclosed = false;
     }
     
     public void costsetup(nodes destination, nodes parent)

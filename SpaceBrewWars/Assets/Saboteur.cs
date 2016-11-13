@@ -8,8 +8,8 @@ public class Saboteur : MonoBehaviour {
     public int owner; // playerID, which player owns it
     public bool alive; // is this ship alive? if not it need to be cleaned up and removed from the world.
     private bool selected;
-    private List<Vector3> seekPosition = new List<Vector3>();
-    int state = 0;
+    public List<Vector3> seekPosition = new List<Vector3>();
+    public int state = 0;
     private Vector3 velocity;
     private float speed;
     public GameObject world;
@@ -24,6 +24,7 @@ public class Saboteur : MonoBehaviour {
         state = 0;
         sepRad = 26;
         world = GameObject.FindGameObjectWithTag("World");
+		speed = 80.0f;
     }
 	
 	// Update is called once per frame
@@ -69,11 +70,15 @@ public class Saboteur : MonoBehaviour {
 
             if (seekPosition.Count == 0)
             {
-
+				
             }
+				
         }
 
         transform.position += velocity * Time.deltaTime;
+		transform.LookAt (transform.position + velocity);
+
+		velocity = new Vector3(0, 0, 0);
 
     }
 
@@ -124,13 +129,17 @@ public class Saboteur : MonoBehaviour {
         PlayerID = PId;
     }
 
-    void OnMouseDown()
+    void OnMouseOver()
     {
+        if (Input.GetMouseButtonDown(1))
+        {
+            world.GetComponent<World>().selectedrightobject = gameObject;
+        }
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("meme");
-            world.GetComponent<World>().selectedobject = gameObject;
+            world.GetComponent<World>().selectedleftobject = gameObject;
         }
+
     }
 
 }

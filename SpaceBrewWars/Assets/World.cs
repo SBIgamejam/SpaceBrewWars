@@ -13,12 +13,13 @@ public class World : MonoBehaviour {
     public GameObject[] players;
     public GameObject playerPrefab;
     public EntityManager myentmanager;
+	public GameObject mypathfind;
 
-    public GameObject selectedobject;
+    public GameObject selectedleftobject;
+    public GameObject selectedrightobject;
 
-
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         // make sure the radius and levels are not zero
         if (worldRadius == 0)
             worldRadius = 1;
@@ -37,17 +38,39 @@ public class World : MonoBehaviour {
 
         WorldGeneration();
 
+        selectedleftobject = null;
+        selectedrightobject = null;
+}
 
+// Update is called once per frame
+void Update () {
 
-    }
-	
-	// Update is called once per frame
-	void Update () {
-	    
         /* Update managers
          * INSERT CODE
          */
-	}
+
+        if (selectedleftobject != null && selectedrightobject != null)
+		{
+            if (selectedleftobject.GetComponent<Saboteur>() && selectedrightobject.GetComponent<Pub>())
+                {
+				selectedleftobject.GetComponent<Saboteur> ().seekPosition = mypathfind.GetComponent<Pathfinder> ().returnPath (selectedleftobject.transform.position,selectedrightobject.transform.position);
+				selectedleftobject.GetComponent<Saboteur>().state = 1;
+                 selectedrightobject = null;
+                }
+
+			if (selectedleftobject.GetComponent<Builder>() && selectedrightobject.GetComponent<Pub>())
+			{
+				selectedleftobject.GetComponent<Builder> ().seekPosition = mypathfind.GetComponent<Pathfinder> ().returnPath (selectedleftobject.transform.position,selectedrightobject.transform.position);
+				selectedleftobject.GetComponent<Builder>().state = 1;
+				selectedrightobject = null;
+			}
+         }
+
+
+
+      
+
+    }
 
     void WorldGeneration()
     {
@@ -55,8 +78,8 @@ public class World : MonoBehaviour {
         Transform transform = GetComponent<Transform>();
         transform.localScale = new Vector3(worldRadius, worldRadius, worldRadius);
 
-        // TODO: call entityCreationManager to create the world and store the results in the EntityManager.
-
-
+        // TODO: call entityCreationManager to create the world and store the results in the EntityManager
     }
+
+
 }
