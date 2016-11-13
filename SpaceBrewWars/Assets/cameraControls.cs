@@ -7,6 +7,8 @@ public class cameraControls : MonoBehaviour {
     private float speed = 300.0f;
     private float transitionSpeed = 300.0f;
 
+    public bool disabled;
+
     private bool keyRight;
     private bool keyLeft;
     private bool keyUp;
@@ -26,6 +28,8 @@ public class cameraControls : MonoBehaviour {
 
     void Start ()
     {
+        disabled = false;
+
         transform.rotation = Quaternion.AngleAxis(45.0f, new Vector3(1, 0, 0));
         keyRight = keyLeft = keyUp = keyDown = false;
         mouseUp = mouseDown = mouseLeft = mouseRight = false;
@@ -44,6 +48,10 @@ public class cameraControls : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(disabled)
+        {
+            return;
+        }
 
         zoomsetting();
         keyboardControls();
